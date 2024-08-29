@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.belajarspring.dto.ResponseData;
+import com.belajarspring.dto.ResponseDTO;
 import com.belajarspring.model.entitites.Product;
 import com.belajarspring.services.ProductService;
 
@@ -33,9 +33,9 @@ public class ProductController {
 
     // RequestBody untuk mengambil data dari body request
     @PostMapping
-    public ResponseEntity<ResponseData<Product>> create(@Valid @RequestBody Product product, Errors errors) {
+    public ResponseEntity<ResponseDTO<Product>> create(@Valid @RequestBody Product product, Errors errors) {
 
-        ResponseData<Product> responseData = new ResponseData<>();
+        ResponseDTO<Product> responseData = new ResponseDTO<>();
 
         // jika ada error atau validasi tidak terpenuhi 
         if (errors.hasErrors()) {
@@ -65,9 +65,9 @@ public class ProductController {
     }
 
     @PutMapping
-    public ResponseEntity<ResponseData<Product>> update(@Valid @RequestBody Product product, Errors errors) {
+    public ResponseEntity<ResponseDTO<Product>> update(@Valid @RequestBody Product product, Errors errors) {
 
-        ResponseData<Product> responseData = new ResponseData<>();
+        ResponseDTO<Product> responseData = new ResponseDTO<>();
 
         if (errors.hasErrors()) {
             for (ObjectError error : errors.getAllErrors()) {

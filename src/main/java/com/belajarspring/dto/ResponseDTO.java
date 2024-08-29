@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // class dto ini untuk men encapsilasi data yang akan dikirimkan ke client
-public class ResponseData<T> {
+public class ResponseDTO<T> {
     private boolean status;
     private List<String> messages = new ArrayList<>();
     private T payload;
