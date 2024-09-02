@@ -35,6 +35,7 @@ public class SupplierController {
     public ResponseEntity<ResponseDTO<Supplier>> create(@Valid @RequestBody SupplierDTO supplierDTO, Errors errors) {
         ResponseDTO<Supplier> response = new ResponseDTO<Supplier>();
 
+
         if (errors.hasErrors()) {
             for (ObjectError error : errors.getAllErrors()) {
                 response.getMessages().add(error.getDefaultMessage());
@@ -50,8 +51,11 @@ public class SupplierController {
         // supplier.setAddress(supplierDTO.getAddress());
         // supplier.setEmail(supplierDTO.getEmail());
 
-        // Dengan Model Mapper
+        // // Dengan Model Mapper
         Supplier supplier = modelMapper.map(response, Supplier.class);
+
+        System.out.println(supplier);
+        
 
         response.setStatus(true);
         response.setPayload(supplierService.save(supplier));
@@ -65,12 +69,10 @@ public class SupplierController {
         return supplierService.findAll();
     }
 
-    
     @GetMapping("/{id}")
     public Supplier findOne(@PathVariable("id") Long id) {
         return supplierService.findOne(id);
     }
-
 
     @PutMapping("/{id}")
     public ResponseEntity<ResponseDTO<Supplier>> update(@Valid @RequestBody SupplierDTO supplierDTO, Errors errors) {

@@ -21,13 +21,13 @@ public class Supplier implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "supplier_name", length = 150, nullable = false)
+    @Column( length = 150)
     private String name;
 
-    @Column(name = "supplier_address", length = 255, nullable = false)
+    @Column( length = 255)
     private String address;
 
-    @Column(name = "supplier_email", length = 100, nullable = false, unique = true)
+    @Column( length = 100, unique = true)
     private String email;
 
     // Ini adalah nama dari field supplier
